@@ -32,6 +32,9 @@
                 <label for="password">Şifre</label>
                 <input type="password" name="password" placeholder="Şifrenizi girin...">
             </div>
+            <div class="yanyana">
+                <p>Hesabımı Hatırla</p><input type="checkbox" name="remember">
+            </div>
             <div class="form-control-button">
                 <button type="submit" name="girisYap" value="GİRİŞ YAP"><i class="fa-solid fa-arrow-right-to-bracket"></i> GİRİŞ YAP</button>
                 <button type="submit" name="kayitOl" value="KAYIT OL"><i class="fa-solid fa-circle-chevron-right"></i> KAYIT OL</button>
