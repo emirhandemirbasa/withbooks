@@ -65,7 +65,7 @@ button:hover {
 .form-control input:focus,
 .form-control select:focus {
     box-shadow: 0px 0px 7px rgba(35, 123, 255, 1);
-    border: 2px rgba(35, 123, 255, 1) solid;
+    outline: 1px rgba(35, 123, 255, 1) solid;
 }
 
 .left-div h1 {
@@ -85,4 +85,16 @@ button i {
     #register {
         flex-direction: column;
     }
+}
+
+.yanyana{
+    flex-direction: row !important;
+    display: flex;
+    margin:0px 20px 20px 0px;
+    gap: 10px;
+}
+
+.yanyana input{
+    cursor: pointer;
+    width: 20px;
 }
