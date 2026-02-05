@@ -1,37 +1,21 @@
 <?php require "../classes/Genders.php"?>
 
+<?php 
+    $adim = isset($_GET["step"]) ? $_GET["step"] : 1;
+    if (isset($_POST["geridonBtn"]) && $_POST["geridonBtn"] == "GERİ DÖN"){
+        header("Location: signup.php?step=1");
+    }else if (isset($_POST["ilerleBtn"]) && $_POST["ilerleBtn"] == "İLERLE"){
+        header("Location: signup.php?step=2");
+    }else if (isset($_POST["girisYap"]) && $_POST["girisYap"] == "GİRİŞ YAP"){
+        header("Location: signin.php");
+    }
+?>
+
 <?php
     $cinsiyet = new Genders();
     $cinsiyetObject = $cinsiyet->getGenders();
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KAYIT ARAYÜZÜ</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />    
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">    
     <style>
-        *{
-            margin:0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        .form-control{
-            width: 100%;
-            margin:15px 0px;
-            display: flex;
-            flex-direction: column;
-            gap:3px;
-            transition: all 0.33s ease-in-out;
-        }
-        body{
-            background-color: #000;
-            color: grey;
-        }
         #register{
             display: flex;
             justify-content: center;
@@ -42,69 +26,15 @@
             flex-wrap: wrap;
             width: 100%;
         }
-        .form-control input,.form-control select{
-            padding: 10px;
-            border-radius: 10px;
-            width: 100%;
-            border:none;
-            outline: none;
-            font-family: "Inter",sans-serif;
-            font-weight: 500;
-            transition: all 0.33s ease-in-out;
-        }
-        form{
-            width: 100%;
-        }
-        .left-div,.right-div{
-             min-width: 300px;
-        }
-        .form-control-button{
-            display: flex;
-            justify-content:space-between;
-        }
-        .form-control-button input, .form-control-button button{
-            padding: 10px;
-            border-radius: 20px;
-            background-color: #237bff;
-            cursor: pointer;
-            border:none;
-            font-family: "Inter",sans-serif;
-            font-weight: bold;
-            color:white;
-            box-shadow: 0px 0px 10px #363636;
-        }
-        .form-control-button input:hover,button:hover{
-            background-color: #5498ff;
-        }
-        .form-control input:focus,.form-control select:focus{
-            box-shadow: 0px 0px 7px rgba(35,123,255,1);
-            border:2px rgba(35, 123, 255, 1) solid; 
-        }
-        .left-div h1{
-            color: #dedede;
-        }
-        .left-div{
-            max-width: 30%;
-        }
-        button i{
-            font-size: 15px;
-            margin-right: 10px;
-        }
-        @media screen and (max-width:768px){
-            #register{
-                flex-direction: column;
-            }
-        }
     </style>
-
-</head>
-<body>
-    <div id="register">
-        <div class="left-div">
+        <?php include "../Views/partials/__header.php"?>
+        <div id="register">
+        <?php if($adim == 1):?>
+        <div class="left-div animate__animated animate__fadeInLeft">
             <h1>WITHBOOKS</h1>
             <p>Hesabınızı oluşturmak için lütfen kişisel bilgilerini doğru bir şekilde giriniz.</p>
         </div>
-        <div class="right-div">
+        <div class="right-div animate__animated animate__fadeInRight">
             <form method="POST">
                 <div class="form-control">
                     <label for="name">Adınız</label>
@@ -128,12 +58,42 @@
                     </select>
                 </div>                  
                 <div class="form-control-button">
-                    <button type="submit" name="girisYap"><i class="fa-solid fa-arrow-right-to-bracket"></i> GİRİŞ YAP</button>  
-                    <button type="submit" name="ilerleBtn"><i class="fa-solid fa-circle-chevron-right"></i> İLERLE</button>     
+                    <button type="submit" name="girisYap" value="GİRİŞ YAP"><i class="fa-solid fa-arrow-right-to-bracket"></i> GİRİŞ YAP</button>  
+                    <button type="submit" name="ilerleBtn" value="İLERLE"><i class="fa-solid fa-circle-chevron-right"></i> İLERLE</button>     
                 </div>  
                 
             </form>
         </div>
+        <?php elseif ($adim==2):?>
+        <div class="left-div animate__animated animate__fadeInLeft">
+            <h1>WITHBOOKS</h1>
+            <p>Hesabınızı oluşturmak için lütfen Kullanıcı adı, E-mail ve Şifrenizi eksiksiz ve doğru bir biçimde girin.</p>
+        </div>
+        <div class="right-div animate__animated animate__fadeInRight">
+            <form method="POST">
+                <div class="form-control">
+                    <label for="username">Kullanıcı Adı</label>
+                    <input type="text" name="username" placeholder="Kullanıcı adınızı girin...">
+                </div>
+                <div class="form-control">
+                    <label for="email">E-Mail</label>
+                    <input type="email" name="email" placeholder="E-mail adresinizi girin...">
+                </div>
+                <div class="form-control">
+                    <label for="password">Şifreniz</label>
+                    <input type="password" name="password" placeholder="Şifre (1x)">
+                </div>         
+                <div class="form-control">
+                    <label for="repassword">Şifre Tekrar</label>
+                    <input type="password" name="repassword" placeholder="Şifre (2x)">
+                </div>                  
+                <div class="form-control-button">
+                    <button type="submit" name="geridonBtn" value="GERİ DÖN"><i class="fa-solid fa-circle-chevron-left"></i> GERİ DÖN</button>  
+                    <button type="submit" name="tamamlaBtn" value="TAMAMLA"><i class="fa-solid fa-circle-chevron-right"left></i> TAMAMLA</button>     
+                </div>  
+                
+            </form>
+        </div>
+        <?php endif?>
     </div>
-</body>
-</html>
+    <?php include "../Views/partials/__footer.php"?>
