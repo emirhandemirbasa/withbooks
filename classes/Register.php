@@ -11,12 +11,6 @@
             $this->baglanti=$baglanti;
         }
 
-        function getRegAccInfo(){
-            echo "E-mail: ".$this->email."<br>";
-            echo "Şifre: ".$this->password."<br>";
-            echo "Tekrar Şifre: ".$this->repassword."<br>";
-        }
-
         function passwordControl(){
             if ($this->password!=$this->repassword){
                 return "ERROR1";
