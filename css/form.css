@@ -40,8 +40,7 @@ form {
 }
 
 .form-control-button {
-    display: flex;
-    justify-content: space-between;
+    width: 100%;
 }
 
 .form-control-button input,
@@ -55,6 +54,7 @@ form {
     font-weight: bold;
     color: white;
     box-shadow: 0px 0px 10px #363636;
+    width: 100%;
 }
 
 .form-control-button input:hover,
@@ -82,7 +82,7 @@ button i {
 }
 
 @media screen and (max-width:768px) {
-    #register {
+    #register,#login {
         flex-direction: column;
     }
 }
@@ -97,4 +97,17 @@ button i {
 .yanyana input{
     cursor: pointer;
     width: 20px;
+}
+
+.question p{
+    color: #aaaaaa;
+}
+
+.question p a{
+    color: #5498ff;
+    text-decoration: none;
+}
+
+.left-div h2{
+    color: #afafaf;
 }
