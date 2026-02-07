@@ -1,4 +1,7 @@
-   <?php require $_SERVER["DOCUMENT_ROOT"]."/withbooks/Controllers/Register.php"?>
+<?php include "../Views/partials/__header.php"?>
+<?php include $_SERVER["DOCUMENT_ROOT"]."/withbooks/Controllers/Register.php"?>
+<?php include $_SERVER["DOCUMENT_ROOT"]."/withbooks/Views/partials/__message.php"?>
+
    <style>
         #register{
             display: flex;
@@ -11,7 +14,6 @@
             width: 100%;
         }
     </style>
-        <?php include "../Views/partials/__header.php"?>
         <div id="register">
         <div class="left-div animate__animated animate__fadeInLeft">
             <h1>WITHBOOKS</h1>
