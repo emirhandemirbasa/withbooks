@@ -62,6 +62,15 @@
             if($signUp->createAccount()["success"]){
                 $_SESSION["Message"] = "Hesabınız başarıyla oluşturuldu, giriş yapabilirsiniz!";
                 $_SESSION["MessageType"] = "success";
+                echo "<script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            document.getElementsByName('kayitol')[0].disabled = true;
+
+                            setTimeout(function(){
+                                window.location.href = 'signin.php';
+                            }, 3000);
+                        });
+                    </script>";
             }else{
                 echo "HESAP OLUŞTURULAMADI!";
             }
